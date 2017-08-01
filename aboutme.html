@@ -4,9 +4,21 @@
     <title> About Me </title>
   </head>
   <body>
-    <h1> LYDIA KIM </h1>
+    <h1 id="demo"> LYDIA KIM </h1>
     <br>
     <br>
+    <script>
+    document.getElementById("demo").onmouseover = function() {mouseOver()};
+    document.getElementById("demo").onmouseout = function() {mouseOut()};
+
+    function mouseOver() {
+        document.getElementById("demo").style.color = "red";
+    }
+
+    function mouseOut() {
+        document.getElementById("demo").style.color = "black";
+    }
+    </script>
     <p> Rising senior in New York. </p> 
     <img src="http://38.media.tumblr.com/86870a62be7d09f50160be9be3537c6a/tumblr_mlusemtvDK1qbib9qo3_400.gif"> </img>
     <h2> TRAVELING </h2>
