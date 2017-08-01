@@ -69,6 +69,7 @@
     @for $i from 1 through $animationElementsCount {
       #{$animationElement}:nth-of-type(#{$i}) {
         animation-delay: #{($i * $delayBetweenLetters) - $totalDelayTime}s;
+        }
       }
     }
   }
