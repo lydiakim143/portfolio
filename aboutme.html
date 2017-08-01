@@ -4,7 +4,17 @@
     <title> About Me </title>
   </head>
   <body>
-    <h1> LYDIA KIM
+    <h1>
+      <div class="container">
+        <span class="txt anim-text-flow">LYDIA KIM</span>
+      </div>
+      <script>
+        $('.txt').html(function(i, html) {
+          var chars = $.trim(html).split("");
+
+          return '<span>' + chars.join('</span><span>') + '</span>';
+        });
+      </script>
     </h1>
     <p> Rising senior in New York. </p> 
     <img src="http://38.media.tumblr.com/86870a62be7d09f50160be9be3537c6a/tumblr_mlusemtvDK1qbib9qo3_400.gif"> </img>
@@ -26,7 +36,42 @@
     text-align: center;
   }
   h1 {
+    
+    .anim-text-flow,
+    .anim-text-flow-hover:hover {
+      
+    $animationSteps: 20;
+    $animationDuration: 50;
+    $animationElement: span;
+    $animationElementsCount: 100;
+    $delayBetweenLetters: 0.2;
+      
+    #{$animationElement} {
+      animation-name: anim-text-flow-keys;
+      animation-duration: #{$animationDuration}s;
+      animation-iteration-count: infinite;
+      animation-direction: alternate;
+      animation-fill-mode: forwards;
+    }
 
+
+    @keyframes anim-text-flow-keys {
+      @for $i from 0 through $animationSteps {
+        #{percentage($i * (1 / $animationSteps))} {
+          color: hsla(random(365), 60, 60, 1);
+        }
+      }
+    }
+
+
+    $totalDelayTime: $animationElementsCount * $delayBetweenLetters;
+
+    @for $i from 1 through $animationElementsCount {
+      #{$animationElement}:nth-of-type(#{$i}) {
+        animation-delay: #{($i * $delayBetweenLetters) - $totalDelayTime}s;
+      }
+    }
+  }
   p {
     text-align: center;
   }
